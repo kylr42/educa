@@ -1,7 +1,7 @@
-from django.db import models
 from django.contrib.auth.models import User
-from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
+from django.db import models
 
 
 class Subject(models.Model):
@@ -50,12 +50,12 @@ class Content(models.Model):
                                related_name='contents',
                                on_delete=models.CASCADE)
     content_type = models.ForeignKey(ContentType,
-                                 on_delete=models.CASCADE,
-                                 limit_choices_to={'model__in': (
-                                                     'text',
-                                                     'video',
-                                                     'image',
-                                                     'file')})
+                                     on_delete=models.CASCADE,
+                                     limit_choices_to={'model__in': (
+                                         'text',
+                                         'video',
+                                         'image',
+                                         'file')})
     object_id = models.PositiveIntegerField()
     item = GenericForeignKey()
 
